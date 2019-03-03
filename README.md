@@ -60,3 +60,18 @@ Client secret: Pmo3tWtgnzBSXvu5iw3zk5A67y6x7Dl0OCi2p2mS
 -   php artisan key:generate
 
 Pronto após o comando **php artisan key:generate** a API já está configurada, para testar basta excutar o comando **php artisan serve** e utilizar um aplicativo ou o navegador para acessar a route http://localhost:8000/api/, se estiver tudo certo você terá o retorno "Teste API Rest DialHost".
+
+## Corrigindo retorno de tela de login padrão do laravel para usuário não autenticado.
+
+Caso o usuário tente acessar uma route na qual não está autorizado a API irá retornar a tela padão de login para que o usuário se autentique, para resolver isso acesse a seguinte class **vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php** e altere o metodo **unauthenticated** para:
+
+```php
+protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        return $request->expectsJson()
+        ? response()->json(['message' => 'Usuário não autorizado'], 401)
+        : response()->json(['message' => 'Usuario nao autorizado'], 401);
+    }
+```
+
+### Pronto agora sempre que o usuário não estiver autenticado o retorno será sempre uma mensagem.
