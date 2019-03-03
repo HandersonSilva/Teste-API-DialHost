@@ -12,7 +12,7 @@
  */
 
 Route::get('/', function () {
-    echo "Teste API DialHost";
+    echo "Teste API Rest DialHost";
 });
 /************* User **************/
 //cadastro de user apenas para gerar o token de acesso
