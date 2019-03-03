@@ -49,10 +49,10 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof MissingScopeException) {
-            return response()->json(['erro' => 'Sem autorização.'], 401);
+            return response()->json(['erro' => 'Sem autorização.', 'status' => false], 401);
         }
         if ($exception instanceof NotFoundHttpException) {
-            return response()->json(['erro' => 'Por favor informe um ID válido.'], 401);
+            return response()->json(['erro' => 'Por favor informe um ID válido.', 'status' => false], 401);
         }
         return parent::render($request, $exception);
 
