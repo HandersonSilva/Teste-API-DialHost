@@ -48,7 +48,7 @@ Crie um banco de dados no mysql e utilize o Arquivo .env.example para configura-
 
 O comando **php artisan passport:client --password** vai gerar um client_id e client_secret que será usado para realizar a requisição do token de acesso a API.
 
-### Exemplo:
+#### Exemplo:
 
 ```js
 Client ID: 3
@@ -59,4 +59,4 @@ Client secret: Pmo3tWtgnzBSXvu5iw3zk5A67y6x7Dl0OCi2p2mS
 
 -   php artisan key:generate
 
-Pronto após o comando **php artisan key:generate** a API já está configurada, para testar basta excutar o comando **php artisan serve** e utilizar um aplicativo ou o navegador apontando para a route http://localhost:8000/api/, se estiver tudo certo você terá o retorno "Teste API Rest DialHost".
+Pronto após o comando **php artisan key:generate** a API já está configurada, para testar basta excutar o comando **php artisan serve** e utilizar um aplicativo ou o navegador para acessar a route http://localhost:8000/api/, se estiver tudo certo você terá o retorno "Teste API Rest DialHost".
