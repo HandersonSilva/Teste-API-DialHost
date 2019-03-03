@@ -74,4 +74,12 @@ protected function unauthenticated($request, AuthenticationException $exception)
     }
 ```
 
-### Pronto agora sempre que o usuário não estiver autenticado o retorno será sempre uma mensagem.
+#### Pronto, agora sempre que o usuário não estiver autenticado o retorno será sempre uma mensagem.
+
+## Conteudo útil para realizar o teste da API
+
+Para realização dos teste e acesso as funcionalidades da API foi utilizado a aplicação **Postman**, sendo assim segue o link da documentação da API postman e o arquivo utilizado no desenvolvimento da API.
+
+### Domcumentação via Postman (https://documenter.getpostman.com/view/852436/S11LsdH9)
+
+### Arquivo para ser importado no Postman se encontra na pasta **_Doc/TESTE-API-DIALHOST.postman.json_**

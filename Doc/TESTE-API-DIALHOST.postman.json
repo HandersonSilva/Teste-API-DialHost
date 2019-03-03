@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "3650a5a9-2251-453c-977a-5a150a4a412c",
+		"name": "TESTE-API-DIALHOST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "Cadastrar cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjAwN2M1M2Y5Yzk0YjYwYzk0MzgyMjZmZDhiZjQzNzQwOTU2NGZjMmU0OTBmOTMxZDJiMGM2NzlkZDE0YWExYzQ3MDkxZjA5ZTkyMjYxNjc3In0.eyJhdWQiOiIxIiwianRpIjoiMDA3YzUzZjljOTRiNjBjOTQzODIyNmZkOGJmNDM3NDA5NTY0ZmMyZTQ5MGY5MzFkMmIwYzY3OWRkMTRhYTFjNDcwOTFmMDllOTIyNjE2NzciLCJpYXQiOjE1NTE1ODUxNDUsIm5iZiI6MTU1MTU4NTE0NSwiZXhwIjoxNTUyODgxMTQ1LCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluaXN0cmFkb3IiXX0.GGk3-Q_XYZACOYYD6pzHc9_9_H94bpu4Dz_K_ZJCh2hqae61mG0IngidevU2mkWFDc6G-WnAjRqQI4kVTg1-CLOV9ADi0HJ76FuI4FJO5IoWMOvVtIa_NsisnDzuMmgrode0Ti6wdqL1yiSGwVnHCB3lj5gbJNLIPQgNl-VI34vsgErt6VQIMPLLIexjbyWsLOZa767MOA5AZkmHYeoEfqSc0XPbLvvLBbKiW9d_oPV1DzoWSuLk2klumPrJjbsVxgHlwukdIOsosHQFGnmboh5ATxIwoK9eFtUZmcpgWe1IJGmzE3Jf7q4B8tcNIJGg-FclRkt9-lycj4rvoyon3K4pyYePWZHaaoPvdFoi_uS6SpLLgOSgcZOFP4bvWTpngpDBSur3yAVg59A86TLuVkSc7V6t4ZMRgvAdSP5YTWWCoZTH7sqJC-AcYPOdHhrLNYmUIZ8hj09pkYIDCQOtOqnbwVCcPv7-C0TSt72nnCNO8zvLqdeP63NDzR5xrRFeZk-fkuO9R5_x3rmH7yLHgGFp6s1wgINJUiAARRKqvGHp8zW4Q0LPGGDZGfTsRxeuvSkxNYkv18Dn5UQb6dOTcr1-NwS__gtISJzCftXytTTUatUTNj-SYhAFlBYAr0CxFOVwRC-5_CvtU_DAySuZZVCZNSb6ShRSJ45zsjkTayU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\":\"DialHost\",\n    \"nome_fantasia\":\"DialHost\",\n    \"seguimento\":\"Tecnologia\",\n    \"cpf/cnpj\":\"00000000000000\",\n    \"email\":\"DialHost@DialHost.com\",\n    \"telefone\":\"111111111\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cliente ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjIzODllZjg1NDhkZGRlODk3ZDk3YjBlNjBiOGYzYzk1NjM5Njc2M2IyZWVmMTUyYWE4YTdiYmJmOTE5ZjM2ODFmOWNmZjQyMDI0ZWY2NDlhIn0.eyJhdWQiOiIxIiwianRpIjoiMjM4OWVmODU0OGRkZGU4OTdkOTdiMGU2MGI4ZjNjOTU2Mzk2NzYzYjJlZWYxNTJhYThhN2JiYmY5MTlmMzY4MWY5Y2ZmNDIwMjRlZjY0OWEiLCJpYXQiOjE1NTE1ODU5MDUsIm5iZiI6MTU1MTU4NTkwNSwiZXhwIjoxNTUyODgxOTA1LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzdWFyaW8iXX0.tVCFFJ_84ma4UlHbYlXgjYjCj04a3WPXvVk69vDMfnKRpa1zVWsBxkhcoq6l9NrimEs7TbhlB2yIh_saOMbpA_7bJfi0ftBhQTugUdXPNVUBqTH1Iid1Io6-GFJ_ea_5sRYOfxFFOhKT2HEsC6ByxFxIZz7ehlDdhdTcMCGpV6GiapMgnTsMFLwUZsfuerP-0dec34qaAoonrXgulwXtD3dTzzUzxpDSqvSm7PReszQVmtt43kMJCCn0fNkOE4XSvhpM3JyOuUx431GZupjb06fso3diP6VOmb86Pb5BkZBMz_EIROYyv8ow26BuKYONjGBy2TScRJ4fndXvsV7giKNoH8Se13H1BN7X3Q6yj3NTlHBGflaQ5p81P7rcNn_cGytI1BcjM_OvukMKNuK90Fh_KLpP1JQBSJLacswMCNMWceeO1XlrPw5lcz8XnYI0pv2LXSANiwbAVt9VasRyetYIpjQK10N9MXqCionk--83irNfBWECeDL1uY4dOGe3LHJY1PsDUPqo0pZlFpwL66AhsCuU-Fzl7zGg-jXvzHv93aoQKxPS2pMxcOJuZONVzZAFh7mbxE7uQr2RgqUA0tDz-aymh_BgTKcheod8jIy2nCas7usxR0Tl96e4sQs8BJ7VlCVs0e3qlu3ZW0v0-Q9OvU4vZr93YM_AEsWJOeo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/cliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todos os clientes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer J0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjIzODllZjg1NDhkZGRlODk3ZDk3YjBlNjBiOGYzYzk1NjM5Njc2M2IyZWVmMTUyYWE4YTdiYmJmOTE5ZjM2ODFmOWNmZjQyMDI0ZWY2NDlhIn0.eyJhdWQiOiIxIiwianRpIjoiMjM4OWVmODU0OGRkZGU4OTdkOTdiMGU2MGI4ZjNjOTU2Mzk2NzYzYjJlZWYxNTJhYThhN2JiYmY5MTlmMzY4MWY5Y2ZmNDIwMjRlZjY0OWEiLCJpYXQiOjE1NTE1ODU5MDUsIm5iZiI6MTU1MTU4NTkwNSwiZXhwIjoxNTUyODgxOTA1LCJzdWIiOiIxIiwic2NvcGVzIjpbInVzdWFyaW8iXX0.tVCFFJ_84ma4UlHbYlXgjYjCj04a3WPXvVk69vDMfnKRpa1zVWsBxkhcoq6l9NrimEs7TbhlB2yIh_saOMbpA_7bJfi0ftBhQTugUdXPNVUBqTH1Iid1Io6-GFJ_ea_5sRYOfxFFOhKT2HEsC6ByxFxIZz7ehlDdhdTcMCGpV6GiapMgnTsMFLwUZsfuerP-0dec34qaAoonrXgulwXtD3dTzzUzxpDSqvSm7PReszQVmtt43kMJCCn0fNkOE4XSvhpM3JyOuUx431GZupjb06fso3diP6VOmb86Pb5BkZBMz_EIROYyv8ow26BuKYONjGBy2TScRJ4fndXvsV7giKNoH8Se13H1BN7X3Q6yj3NTlHBGflaQ5p81P7rcNn_cGytI1BcjM_OvukMKNuK90Fh_KLpP1JQBSJLacswMCNMWceeO1XlrPw5lcz8XnYI0pv2LXSANiwbAVt9VasRyetYIpjQK10N9MXqCionk--83irNfBWECeDL1uY4dOGe3LHJY1PsDUPqo0pZlFpwL66AhsCuU-Fzl7zGg-jXvzHv93aoQKxPS2pMxcOJuZONVzZAFh7mbxE7uQr2RgqUA0tDz-aymh_BgTKcheod8jIy2nCas7usxR0Tl96e4sQs8BJ7VlCVs0e3qlu3ZW0v0-Q9OvU4vZr93YM_AEsWJOeo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjAwN2M1M2Y5Yzk0YjYwYzk0MzgyMjZmZDhiZjQzNzQwOTU2NGZjMmU0OTBmOTMxZDJiMGM2NzlkZDE0YWExYzQ3MDkxZjA5ZTkyMjYxNjc3In0.eyJhdWQiOiIxIiwianRpIjoiMDA3YzUzZjljOTRiNjBjOTQzODIyNmZkOGJmNDM3NDA5NTY0ZmMyZTQ5MGY5MzFkMmIwYzY3OWRkMTRhYTFjNDcwOTFmMDllOTIyNjE2NzciLCJpYXQiOjE1NTE1ODUxNDUsIm5iZiI6MTU1MTU4NTE0NSwiZXhwIjoxNTUyODgxMTQ1LCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluaXN0cmFkb3IiXX0.GGk3-Q_XYZACOYYD6pzHc9_9_H94bpu4Dz_K_ZJCh2hqae61mG0IngidevU2mkWFDc6G-WnAjRqQI4kVTg1-CLOV9ADi0HJ76FuI4FJO5IoWMOvVtIa_NsisnDzuMmgrode0Ti6wdqL1yiSGwVnHCB3lj5gbJNLIPQgNl-VI34vsgErt6VQIMPLLIexjbyWsLOZa767MOA5AZkmHYeoEfqSc0XPbLvvLBbKiW9d_oPV1DzoWSuLk2klumPrJjbsVxgHlwukdIOsosHQFGnmboh5ATxIwoK9eFtUZmcpgWe1IJGmzE3Jf7q4B8tcNIJGg-FclRkt9-lycj4rvoyon3K4pyYePWZHaaoPvdFoi_uS6SpLLgOSgcZOFP4bvWTpngpDBSur3yAVg59A86TLuVkSc7V6t4ZMRgvAdSP5YTWWCoZTH7sqJC-AcYPOdHhrLNYmUIZ8hj09pkYIDCQOtOqnbwVCcPv7-C0TSt72nnCNO8zvLqdeP63NDzR5xrRFeZk-fkuO9R5_x3rmH7yLHgGFp6s1wgINJUiAARRKqvGHp8zW4Q0LPGGDZGfTsRxeuvSkxNYkv18Dn5UQb6dOTcr1-NwS__gtISJzCftXytTTUatUTNj-SYhAFlBYAr0CxFOVwRC-5_CvtU_DAySuZZVCZNSb6ShRSJ45zsjkTayU",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"email\":\"DialHost@DialHost.com\",\n    \"telefone\":\"1212312312333\"\n \n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/cliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjAwN2M1M2Y5Yzk0YjYwYzk0MzgyMjZmZDhiZjQzNzQwOTU2NGZjMmU0OTBmOTMxZDJiMGM2NzlkZDE0YWExYzQ3MDkxZjA5ZTkyMjYxNjc3In0.eyJhdWQiOiIxIiwianRpIjoiMDA3YzUzZjljOTRiNjBjOTQzODIyNmZkOGJmNDM3NDA5NTY0ZmMyZTQ5MGY5MzFkMmIwYzY3OWRkMTRhYTFjNDcwOTFmMDllOTIyNjE2NzciLCJpYXQiOjE1NTE1ODUxNDUsIm5iZiI6MTU1MTU4NTE0NSwiZXhwIjoxNTUyODgxMTQ1LCJzdWIiOiIxIiwic2NvcGVzIjpbImFkbWluaXN0cmFkb3IiXX0.GGk3-Q_XYZACOYYD6pzHc9_9_H94bpu4Dz_K_ZJCh2hqae61mG0IngidevU2mkWFDc6G-WnAjRqQI4kVTg1-CLOV9ADi0HJ76FuI4FJO5IoWMOvVtIa_NsisnDzuMmgrode0Ti6wdqL1yiSGwVnHCB3lj5gbJNLIPQgNl-VI34vsgErt6VQIMPLLIexjbyWsLOZa767MOA5AZkmHYeoEfqSc0XPbLvvLBbKiW9d_oPV1DzoWSuLk2klumPrJjbsVxgHlwukdIOsosHQFGnmboh5ATxIwoK9eFtUZmcpgWe1IJGmzE3Jf7q4B8tcNIJGg-FclRkt9-lycj4rvoyon3K4pyYePWZHaaoPvdFoi_uS6SpLLgOSgcZOFP4bvWTpngpDBSur3yAVg59A86TLuVkSc7V6t4ZMRgvAdSP5YTWWCoZTH7sqJC-AcYPOdHhrLNYmUIZ8hj09pkYIDCQOtOqnbwVCcPv7-C0TSt72nnCNO8zvLqdeP63NDzR5xrRFeZk-fkuO9R5_x3rmH7yLHgGFp6s1wgINJUiAARRKqvGHp8zW4Q0LPGGDZGfTsRxeuvSkxNYkv18Dn5UQb6dOTcr1-NwS__gtISJzCftXytTTUatUTNj-SYhAFlBYAr0CxFOVwRC-5_CvtU_DAySuZZVCZNSb6ShRSJ45zsjkTayU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/cliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario Autenticação",
+			"item": [
+				{
+					"name": "Create auth user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"name\":\"Teste\",\n \"email\":\"teste@teste.com\",\n \"password\":\"1234\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Passport",
+			"item": [
+				{
+					"name": "Gerar o token de acesso para o usuario.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"grant_type\":\"password\",\n\"client_id\":\"1\",\n\"client_secret\":\"xRL60tB6nAhtVWzdjrNlTt4X29aqiIyo2pvJ3y2r\",\n\"username\":\"teste@teste.com\",\n\"password\":\"1234\",\n\"scope\":\"administrador\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
