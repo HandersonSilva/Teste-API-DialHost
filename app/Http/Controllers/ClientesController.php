@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Clientes;
+use Exception;
 use Illuminate\Http\Request;
 
 class ClientesController extends Controller
@@ -13,7 +15,19 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $cliente = Clientes::all();
+
+            if ($cliente) {
+                return response()->json(['status' => 'sucesso', 'data' => $cliente], 201);
+            } else {
+                return response()->json(['message' => 'Não foi possivel retornar os clientes', 'status' => 'error'], 400);
+            }
+        } catch (Exception $e) {
+
+            return response()->json(['message' => 'Não foi possivel retornar os clientes error = ' . $e->getMessage(), 'status' => 'error'], 400);
+
+        }
     }
 
     /**
@@ -34,7 +48,23 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->all();
+
+        try {
+
+            $cliente = Clientes::create($dados);
+
+            if ($cliente) {
+                return response()->json(['data' => $cliente, 'status' => 'sucesso'], 201);
+            } else {
+                return response()->json(['message' => 'Não foi possivel cadastrar o cliente' . $dados['nome']], 400);
+            }
+
+        } catch (Exception $e) {
+            return response()->json(['message' => 'Não foi possivel cadastrar o cliente ' . $dados['nome'] . ' error = ' . $e->getMessage(), 'status' => 'error'], 400);
+
+        }
+
     }
 
     /**
@@ -45,7 +75,26 @@ class ClientesController extends Controller
      */
     public function show($id)
     {
-        //
+
+        if ($id > 0) {
+            try {
+                $cliente = Clientes::find($id);
+
+                if ($cliente) {
+                    return response()->json(['data' => $cliente, 'status' => 'sucesso'], 201);
+                } else {
+                    return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id, 'status' => 'error'], 400);
+                }
+            } catch (Exception $e) {
+
+                return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id . 'error = ' . $e->getMessage(), 'status' => 'error'], 400);
+
+            }
+        } else {
+            return response()->json(['message' => 'Por favor informe o id válido', 'status' => 'error'], 404);
+
+        }
+
     }
 
     /**
