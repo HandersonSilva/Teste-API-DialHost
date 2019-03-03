@@ -23,9 +23,11 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('/clientes', 'ClientesController@store')->middleware('scope:administrador');
     //listar todos os clientes
     Route::get('/clientes', 'ClientesController@index')->middleware('scope:administrador,usuario');
-    //get cliente por id
+    //listar cliente por id
     Route::get('/cliente/{id}', 'ClientesController@show')->middleware('scope:administrador,usuario');
-    //get cliente por id
+    //editar cliente
     Route::put('/cliente/{id}', 'ClientesController@update')->middleware('scope:administrador');
+    //excluir cliente
+    Route::delete('/cliente/{id}', 'ClientesController@destroy')->middleware('scope:administrador');
 
 });

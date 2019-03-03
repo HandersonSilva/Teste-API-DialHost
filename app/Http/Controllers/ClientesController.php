@@ -16,9 +16,12 @@ class ClientesController extends Controller
     public function index()
     { //listando todos os clientes
         try {
-            $cliente = Clientes::all();
-
+            $cliente = Clientes::all()->toArray();
+            if (empty($cliente)) {
+                return response()->json(['message' => 'Não existe clientes cadastrados no sistema', 'status' => true], 201);
+            }
             if ($cliente) {
+
                 return response()->json(['status' => true, 'data' => $cliente], 201);
             } else {
                 return response()->json(['message' => 'Não foi possivel retornar os clientes', 'status' => false], 400);
@@ -160,7 +163,35 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    { //Excluido registro
+
+        if ($id > 0) {
+            try {
+                $cliente = Clientes::find($id);
+
+                if ($cliente) {
+                    try {
+                        $cliente->delete();
+
+                        return response()->json(['data' => "Cliente excluido com sucesso", 'status' => true], 201);
+
+                    } catch (Exception $e) {
+
+                        return response()->json(['message' => 'Não foi possivel excluir o cliente ID = ' . $id . 'error = ' . $e->getMessage(), 'status' => false], 400);
+                    }
+
+                } else {
+                    return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id, 'status' => false], 400);
+                }
+            } catch (Exception $e) {
+
+                return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id . 'error = ' . $e->getMessage(), 'status' => false], 400);
+
+            }
+        } else {
+            return response()->json(['message' => 'Por favor informe um id válido', 'status' => false], 404);
+
+        }
+
     }
 }
