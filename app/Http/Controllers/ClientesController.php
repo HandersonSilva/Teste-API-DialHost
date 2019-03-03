@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Clientes;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 
 class ClientesController extends Controller
 {
@@ -52,6 +53,17 @@ class ClientesController extends Controller
     public function store(Request $request)
     { //cadastrando cliente
         $dados = $request->all();
+
+        //validação dos dados
+        $validator = $this->validarDados($dados, "store");
+        if ($validator['STATUS']) {
+
+            $retorno = array(
+                'status' => false,
+                'errors' => $validator['msgError'],
+            );
+            return response()->json($retorno);
+        }
 
         try {
 
@@ -125,6 +137,16 @@ class ClientesController extends Controller
             return response()->json(['message' => 'Nenhum dado enviado para a edição', 'status' => false], 404);
 
         }
+        //validação dos dados
+        $validator = $this->validarDados($dados, "update");
+        if ($validator['STATUS']) {
+
+            $retorno = array(
+                'status' => false,
+                'errors' => $validator['msgError'],
+            );
+            return response()->json($retorno);
+        }
 
         if ($id > 0) {
             try {
@@ -191,6 +213,70 @@ class ClientesController extends Controller
         } else {
             return response()->json(['message' => 'Por favor informe um id válido', 'status' => false], 404);
 
+        }
+
+    }
+
+    public function validarDados($data, $op)
+    {
+        switch ($op) {
+            case 'store':
+
+                //validar dados cliente create
+                $validator = \Validator::make($data, [
+                    'nome' => 'required|unique:clientes',
+                    'nome_fantasia' => 'required|unique:clientes',
+                    'seguimento' => 'required',
+                    'cpf/cnpj' => 'required|string|min:11|max:14|unique:clientes',
+                    'email' => 'required|email|unique:clientes',
+                    'telefone' => 'required |string|min:9|max:14',
+                ], [
+                    "required" => "O campo :attribute não pode está vazio",
+                    "unique" => "O :attribute :input já existe no banco de dados",
+                    "email" => "O email  :input não é válido",
+                    "cpf/cnpj.max" => "O campo :attribute não pode conter mais de 14 caracteres",
+                    "cpf/cnpj.min" => "O campo :attribute não pode conter menos de 11 caracteres",
+                    "telefone.max" => "O campo :attribute não pode conter mais de 14 caracteres",
+                    "telefone.min" => "O campo :attribute não pode conter menos de 11 caracteres",
+
+                ]
+                );
+                if ($validator->fails()) {
+                    $retorno = [
+                        "STATUS" => $validator->fails(),
+                        'msgError' => $validator->errors()->all(),
+                    ];
+                    return $retorno;
+                }
+                break;
+
+            case 'update':
+
+                //validar dados cliente update
+                $validator = \Validator::make($data, [
+                    'nome' => 'unique:clientes',
+                    'nome_fantasia' => 'unique:clientes',
+                    'cpf/cnpj' => 'unique:clientes|string|min:11|max:14',
+                    'email' => 'unique:clientes|email',
+                    'telefone' => 'string|min:9|max:14',
+                ], [
+                    "unique" => "O :attribute :input já existe no banco de dados",
+                    "email" => "O email  :input não é válido",
+                    "cpf/cnpj.max" => "O campo :attribute não pode conter mais de 14 caracteres",
+                    "cpf/cnpj.min" => "O campo :attribute não pode conter menos de 11 caracteres",
+                    "telefone.max" => "O campo :attribute não pode conter mais de 14 caracteres",
+                    "telefone.min" => "O campo :attribute não pode conter menos de 11 caracteres",
+
+                ]
+                );
+                if ($validator->fails()) {
+                    $retorno = [
+                        "STATUS" => $validator->fails(),
+                        'msgError' => $validator->errors()->all(),
+                    ];
+                    return $retorno;
+                }
+                break;
         }
 
     }

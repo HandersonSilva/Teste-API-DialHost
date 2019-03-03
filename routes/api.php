@@ -15,6 +15,7 @@ Route::get('/', function () {
     echo "Teste API DialHost";
 });
 /************* User **************/
+//cadastro de user apenas para gerar o token de acesso
 Route::post('/users', 'UserController@store');
 
 /************** Clientes ********************/
