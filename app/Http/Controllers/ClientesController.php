@@ -14,18 +14,18 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { //listando todos os clientes
         try {
             $cliente = Clientes::all();
 
             if ($cliente) {
-                return response()->json(['status' => 'sucesso', 'data' => $cliente], 201);
+                return response()->json(['status' => true, 'data' => $cliente], 201);
             } else {
-                return response()->json(['message' => 'Não foi possivel retornar os clientes', 'status' => 'error'], 400);
+                return response()->json(['message' => 'Não foi possivel retornar os clientes', 'status' => false], 400);
             }
         } catch (Exception $e) {
 
-            return response()->json(['message' => 'Não foi possivel retornar os clientes error = ' . $e->getMessage(), 'status' => 'error'], 400);
+            return response()->json(['message' => 'Não foi possivel retornar os clientes error = ' . $e->getMessage(), 'status' => false], 400);
 
         }
     }
@@ -47,7 +47,7 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { //cadastrando cliente
         $dados = $request->all();
 
         try {
@@ -55,13 +55,13 @@ class ClientesController extends Controller
             $cliente = Clientes::create($dados);
 
             if ($cliente) {
-                return response()->json(['data' => $cliente, 'status' => 'sucesso'], 201);
+                return response()->json(['data' => $cliente, 'status' => true], 201);
             } else {
-                return response()->json(['message' => 'Não foi possivel cadastrar o cliente' . $dados['nome']], 400);
+                return response()->json(['message' => 'Não foi possivel cadastrar o cliente' . $dados['nome'], 'status' => false], 400);
             }
 
         } catch (Exception $e) {
-            return response()->json(['message' => 'Não foi possivel cadastrar o cliente ' . $dados['nome'] . ' error = ' . $e->getMessage(), 'status' => 'error'], 400);
+            return response()->json(['message' => 'Não foi possivel cadastrar o cliente ' . $dados['nome'] . ' error = ' . $e->getMessage(), 'status' => false], 400);
 
         }
 
@@ -74,24 +74,23 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-
+    { //busca por cliente id
         if ($id > 0) {
             try {
                 $cliente = Clientes::find($id);
 
                 if ($cliente) {
-                    return response()->json(['data' => $cliente, 'status' => 'sucesso'], 201);
+                    return response()->json(['data' => $cliente, 'status' => true], 201);
                 } else {
-                    return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id, 'status' => 'error'], 400);
+                    return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id, 'status' => false], 400);
                 }
             } catch (Exception $e) {
 
-                return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id . 'error = ' . $e->getMessage(), 'status' => 'error'], 400);
+                return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id . 'error = ' . $e->getMessage(), 'status' => false], 400);
 
             }
         } else {
-            return response()->json(['message' => 'Por favor informe o id válido', 'status' => 'error'], 404);
+            return response()->json(['message' => 'Por favor informe um id válido', 'status' => false], 404);
 
         }
 
@@ -105,7 +104,6 @@ class ClientesController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -116,8 +114,43 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { //Editando o cliente
+
+        $dados = $request->all();
+
+        if (!$dados) {
+            return response()->json(['message' => 'Nenhum dado enviado para a edição', 'status' => false], 404);
+
+        }
+
+        if ($id > 0) {
+            try {
+                $cliente = Clientes::find($id);
+
+                if ($cliente) {
+                    try {
+                        $cliente->update($dados);
+
+                        return response()->json(['data' => $cliente, 'status' => true], 201);
+
+                    } catch (Exception $e) {
+
+                        return response()->json(['message' => 'Não foi possivel editar o cliente ID = ' . $id . 'error = ' . $e->getMessage(), 'status' => false], 400);
+                    }
+
+                } else {
+                    return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id, 'status' => false], 400);
+                }
+            } catch (Exception $e) {
+
+                return response()->json(['message' => 'Não foi possivel encontrar o cliente ID = ' . $id . 'error = ' . $e->getMessage(), 'status' => false], 400);
+
+            }
+        } else {
+            return response()->json(['message' => 'Por favor informe um id válido', 'status' => false], 404);
+
+        }
+
     }
 
     /**
