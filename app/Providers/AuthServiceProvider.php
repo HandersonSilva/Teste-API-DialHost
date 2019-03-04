@@ -29,9 +29,9 @@ class AuthServiceProvider extends ServiceProvider
         //
 
         //setar validade do token
-        Passport::tokensExpireIn(now()->addDays(15));
+        Passport::tokensExpireIn(now()->addDays(30));
         //setar validade do refresh token
-        Passport::refreshTokensExpireIn(now()->addDays(30));
+        Passport::refreshTokensExpireIn(now()->addDays(60));
         //definição de niveis de acesso
         Passport::tokensCan([
             'usuario' => 'Usuário comum',

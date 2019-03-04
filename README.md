@@ -122,10 +122,13 @@ POST http://localhost:8000/oauth/token
 passando os seguintes dados
 
 ```js
+/*dados criados com o comando php artisan passport:client --password
+"client_id":"3",
+"client_secret":"Pmo3tWtgnzBSXvu5iw3zk5A67y6x7Dl0OCi2p2mS",*/
 {
 "grant_type":"password",
-"client_id":"3",//php artisan passport:client --password
-"client_secret":"Pmo3tWtgnzBSXvu5iw3zk5A67y6x7Dl0OCi2p2mS",//php artisan passport:client --password
+"client_id":"3",
+"client_secret":"Pmo3tWtgnzBSXvu5iw3zk5A67y6x7Dl0OCi2p2mS",
 "username":"teste@teste.com",
 "password":"1234",
 "scope":"administrador"
@@ -162,7 +165,9 @@ O **scope** define o tipo de usuário **administrador** ou **usuario**.
 
 ### Com o access_token já criado basta configura-lo no Headers do postman e realizar o acesso as routes da API.
 
-## Testando o CRUD Clientes (Para todas as rotas é necessario passar o access_token no Headers)
+## Testando o CRUD Clientes
+
+### Para todas as rotas é necessario passar o access_token no Headers
 
 ### Cadastro de clientes
 
@@ -176,12 +181,14 @@ passando os dados do Cliente.
 
 ```js
 {
-	"nome":"DialHost",
+
+    "nome":"DialHost",
     "nome_fantasia":"DialHost",
     "seguimento":"Tecnologia",
     "cpf/cnpj":"00000000000000",
     "email":"DialHost@DialHost.com",
     "telefone":"111111111"
+
 }
 ```
 
